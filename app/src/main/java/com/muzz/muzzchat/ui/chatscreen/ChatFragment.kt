@@ -40,6 +40,10 @@ class ChatFragment : BaseFragment<FragmentChatBinding>() {
     }
 
     private fun handleOnBackPressed() {
+        binding.fragmentChatBackBtn.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         activity?.onBackPressedDispatcher?.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 findNavController().popBackStack()

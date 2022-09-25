@@ -7,6 +7,7 @@
     <string name="message_send_button">Message send button</string>
     <string name="message_mark">message mark</string>
     <string name="send_message_hint">Your message here</string>
+    <string name="ando">Ando</string>
 
 
     <string-array name="answers_array">
@@ -22,5 +23,9 @@
         <item>Yes?</item>
         <item>No?</item>
         <item>Hello?</item>
+        <item>Kotlin coroutines streamline asynchronous programming, making common tasks like network calls and database updates simple and performant.</item>
+        <item>Android is modern UI toolkit is built on Kotlin, allowing you to create UI quickly with powerful and intuitive APIs.</item>
+        <item>With nullability included in its type system, Kotlin helps you avoid NullPointerExceptions. Android apps that use Kotlin are 20%% less likely to crash.</item>
+        <item>Kotlin is modern language features allow you to focus on expressing your ideas and write less boilerplate code.</item>
     </string-array>
 </resources>

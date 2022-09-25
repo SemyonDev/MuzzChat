@@ -40,6 +40,13 @@
                 android:padding="@dimen/default_padding_small"
                 android:src="@drawable/ic_android" />
 
+            <TextView
+                android:paddingStart="@dimen/default_margin"
+                android:textColor="@color/black"
+                android:text="@string/ando"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="RtlSymmetry" />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
