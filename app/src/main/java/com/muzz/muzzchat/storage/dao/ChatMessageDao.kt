@@ -11,6 +11,13 @@ import kotlinx.coroutines.flow.Flow
 
 interface ChatMessageDao {
 
+    @Query("SELECT * FROM ChatMessageList")
+    fun getChatMessageList(): Flow<List<ChatMessageEntity>>
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertChatMessageList(vararg chatMessageList: ChatMessageEntity): List<Long>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertChatMessage(chatMessage: ChatMessageEntity): Long
 
 }

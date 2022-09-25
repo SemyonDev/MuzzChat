@@ -27,4 +27,12 @@ object AppModule {
     @Singleton
     @Provides
     fun provideMessageDao(db: MyRoomDatabase) = db.chatMessageDao()
+
+    @Singleton
+    @Provides
+    fun provideChatRepository(chatMessageDao: ChatMessageDao): ChatRepository = ChatRepositoryImpl(chatMessageDao)
+
+    @Singleton
+    @Provides
+    fun provideChatUseCase(chatRepository: ChatRepository): ChatUseCase = ChatUseCaseImpl(chatRepository)
 }
