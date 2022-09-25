@@ -14,5 +14,7 @@ data class ChatMessage(
     val type: Int = 0,
     @field:Json(name = "timestamp")
     val timestamp: Long? = null,
+    @field:Json(name = "status")
+    val isViewed: Boolean = false,
     var isShowTimeStamp: Boolean = false,
 ) : Parcelable

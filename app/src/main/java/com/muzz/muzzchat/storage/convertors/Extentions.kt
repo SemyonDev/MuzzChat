@@ -9,6 +9,7 @@ fun ChatMessage.toChatMessageEntity() = ChatMessageEntity(
     message = this.message,
     type = this.type,
     timestamp = System.currentTimeMillis(),
+    isViewed = this.isViewed,
 )
 
 fun ChatMessageEntity.toChatMessage() = ChatMessage(
@@ -16,6 +17,7 @@ fun ChatMessageEntity.toChatMessage() = ChatMessage(
     message = this.message,
     type = this.type,
     timestamp = this.timestamp,
+    isViewed = this.isViewed,
 )
 
 fun List<ChatMessage>.toChatMessageEntityList() = this.map {

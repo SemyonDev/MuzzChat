@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.muzz.muzzchat.R
 import com.muzz.muzzchat.databinding.ItemMessageMeBinding
 import com.muzz.muzzchat.databinding.ItemMessageOtherBinding
 import com.muzz.muzzchat.entities.ChatMessage
@@ -60,9 +61,14 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 showTimeHeader(chatMessage)
                 if (chatMessage.isShowTimeStamp) {
                     itemMessageMeHeaderTimeTxt.visibility = View.VISIBLE
-                    itemMessageMeHeaderTimeTxt.text =  getDate(startTime, "EEEE HH:mm")
+                    itemMessageMeHeaderTimeTxt.text = getDate(startTime, "EEEE HH:mm")
                 }
                 itemMessageMeTxt.text = chatMessage.message
+                if (chatMessage.isViewed) {
+                    itemMessageStatusImg.setImageResource(R.drawable.ic_double_mark_done)
+                } else {
+                    itemMessageStatusImg.setImageResource(R.drawable.ic_double_mark_progress)
+                }
             }
         }
     }
@@ -71,6 +77,12 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind(chatMessage: ChatMessage) {
             with(binding) {
+                itemMessageOtherHeaderTimeTxt.visibility = View.GONE
+                showTimeHeader(chatMessage)
+                if (chatMessage.isShowTimeStamp) {
+                    itemMessageOtherHeaderTimeTxt.visibility = View.VISIBLE
+                    itemMessageOtherHeaderTimeTxt.text = getDate(startTime, "EEEE HH:mm")
+                }
                 itemMessageOtherTxt.text = chatMessage.message
             }
         }
@@ -105,12 +117,12 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
 
         override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldList[oldItemPosition].id == newList[newItemPosition].id
+            return oldList[oldItemPosition].id == newList[newItemPosition].id && oldList[oldItemPosition].isViewed == newList[newItemPosition].isViewed
         }
 
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
             return when {
-                oldList[oldItemPosition].id == newList[newItemPosition].id -> true
+                oldList[oldItemPosition].id == newList[newItemPosition].id && oldList[oldItemPosition].isViewed == newList[newItemPosition].isViewed -> true
                 else -> false
             }
         }

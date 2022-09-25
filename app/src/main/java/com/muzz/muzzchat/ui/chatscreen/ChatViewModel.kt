@@ -37,6 +37,8 @@ class ChatViewModel @Inject constructor(private val chatUseCase: ChatUseCase) : 
                 ).toChatMessageEntity()
             )
             generateAnswer()
+            delay(20000)
+            udateIsViewed()
         }
     }
 
@@ -55,5 +57,10 @@ class ChatViewModel @Inject constructor(private val chatUseCase: ChatUseCase) : 
                 type = 1
             ).toChatMessageEntity()
         )
+        udateIsViewed()
+    }
+
+    suspend private fun udateIsViewed(){
+        chatUseCase.updateIsViewed()
     }
 }

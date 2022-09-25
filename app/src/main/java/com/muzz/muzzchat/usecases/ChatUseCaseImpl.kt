@@ -9,4 +9,5 @@ class ChatUseCaseImpl @Inject constructor(private val chatRepository: ChatReposi
     override suspend fun getChatHistory() = chatRepository.getChatHistory()
     override suspend fun addMessageIntoChatHistory(chatMessageEntity: ChatMessageEntity) =
         chatRepository.addMessageIntoChatHistory(chatMessageEntity)
+    override suspend fun updateIsViewed() = chatRepository.updateIsViewed()
 }

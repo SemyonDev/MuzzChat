@@ -1,9 +1,6 @@
 package com.muzz.muzzchat.storage.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.muzz.muzzchat.storage.entities.ChatMessageEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -20,4 +17,9 @@ interface ChatMessageDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertChatMessage(chatMessage: ChatMessageEntity): Long
 
+    @Query("UPDATE ChatMessageList SET isViewed = 1")
+    suspend fun updateIsViewed(): Int
+
+//    @Update(entity = ChatMessageEntity::class)
+//    suspend fun updateIsViewed(isViewed: Boolean)
 }

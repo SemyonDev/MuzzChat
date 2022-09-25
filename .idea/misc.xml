@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/drawable-v24/ic_double_mark_progress.xml" value="0.1" />
         <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
         <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/drawable/circle_bg.xml" value="0.101" />
         <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/drawable/edtxt_border.xml" value="0.1" />
         <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/drawable/ic_back.xml" value="0.1255" />
         <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/drawable/ic_double_mark.xml" value="0.161" />
+        <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/drawable/ic_double_mark_done.xml" value="0.104" />
         <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/drawable/ic_double_mark_progress.xml" value="0.161" />
         <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1255" />
         <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/drawable/ic_send.xml" value="0.1" />
@@ -22,7 +24,7 @@
         <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/layout/item_message_me_2.xml" value="0.16822916666666668" />
         <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/layout/item_message_me_reserve.xml" value="0.1" />
         <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/layout/item_message_me_time.xml" value="0.16822916666666668" />
-        <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/layout/item_message_other.xml" value="0.20052083333333334" />
+        <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/layout/item_message_other.xml" value="0.1" />
         <entry key="..\:/Users/Semyon/Desktop/Projects/MuzzChat/app/src/main/res/layout/item_message_other2.xml" value="0.19427083333333334" />
       </map>
     </option>

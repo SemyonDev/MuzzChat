@@ -10,4 +10,5 @@ class ChatRepositoryImpl @Inject constructor(
 ): ChatRepository {
     override suspend fun getChatHistory() = chatMessageDao.getChatMessageList()
     override suspend fun addMessageIntoChatHistory(chatMessageEntity: ChatMessageEntity) = chatMessageDao.insertChatMessage(chatMessageEntity)
+    override suspend fun updateIsViewed() = chatMessageDao.updateIsViewed()
 }

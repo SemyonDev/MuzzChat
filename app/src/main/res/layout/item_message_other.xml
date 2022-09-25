@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/item_message_other_txt"
-    android:layout_width="wrap_content"
-    android:maxWidth="300dp"
-    android:layout_margin="@dimen/default_margin_small"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/message_other_bg"
-    android:padding="@dimen/default_padding_small"
-    android:textColor="@color/black"
-    tools:text="@string/lorem_ipsum" />
+    android:layout_margin="@dimen/default_margin_small"
+    tools:context=".ui.MainActivity">
 
+    <TextView
+        android:id="@+id/item_message_other_header_time_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Thursday 11:59"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/item_message_other_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/default_margin_small"
+        android:background="@drawable/message_other_bg"
+        android:maxWidth="300dp"
+        android:padding="@dimen/default_padding_small"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_message_other_header_time_txt"
+        tools:text="@string/lorem_ipsum" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

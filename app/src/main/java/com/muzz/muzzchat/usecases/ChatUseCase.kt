@@ -6,4 +6,5 @@ import kotlinx.coroutines.flow.Flow
 interface ChatUseCase {
     suspend fun getChatHistory(): Flow<List<ChatMessageEntity>>
     suspend fun addMessageIntoChatHistory(chatMessageEntity: ChatMessageEntity): Long
+    suspend fun updateIsViewed(): Int
 }
