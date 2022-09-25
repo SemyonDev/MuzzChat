@@ -17,7 +17,17 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         private val VIEW_TYPE_OTHER_MESSAGE = 1
     }
 
+    var startTime = 0L
+    var interval = 1000
+
     private var messageList = mutableListOf<ChatMessage>()
+
+    fun setChatMessageList(newMessageList: List<ChatMessage>) {
+        val diffResult = DiffUtil.calculateDiff(UserDiffUtilCallback(messageList, newMessageList))
+        messageList.clear()
+        messageList.addAll(newMessageList)
+        diffResult.dispatchUpdatesTo(this)
+    }
 
     fun loadMessages(messages: List<ChatMessage>) {
         messageList.clear()
@@ -57,6 +67,11 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bind(chatMessage: ChatMessage) {
             with(binding) {
                 itemMessageMeHeaderTimeTxt.visibility = View.GONE
+                showTimeHeader(itemMessageMeHeaderTimeTxt, chatMessage)
+                if (chatMessage.isShowTimeStamp) {
+                    itemMessageMeHeaderTimeTxt.visibility = View.VISIBLE
+                    itemMessageMeHeaderTimeTxt.text = startTime.toString()
+                }
                 itemMessageMeTxt.text = chatMessage.message
             }
         }
@@ -78,9 +93,50 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount() = messageList.size
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (position == 0) {
+            startTime = 0L
+        }
         when (holder) {
             is MyMessageHolder -> holder.bind(messageList.get(position))
             is OtherMessageHolder -> holder.bind(messageList.get(position))
         }
+    }
+
+    inner class UserDiffUtilCallback(
+        private val oldList: List<ChatMessage>,
+        private val newList: List<ChatMessage>
+    ) : DiffUtil.Callback() {
+        override fun getOldListSize(): Int {
+            return oldList.size
+        }
+
+        override fun getNewListSize(): Int {
+            return newList.size
+        }
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].id == newList[newItemPosition].id
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return when {
+                oldList[oldItemPosition].id == newList[newItemPosition].id -> true
+                else -> false
+            }
+        }
+
+        override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? {
+            return super.getChangePayload(oldItemPosition, newItemPosition)
+        }
+    }
+
+    private fun showTimeHeader(timeTV: TextView, chatMessage: ChatMessage) {
+        chatMessage.timestamp?.let {
+            if ((startTime + interval) < it) {
+                startTime = it
+                chatMessage.isShowTimeStamp = true
+            }
+        }
+
     }
 }
