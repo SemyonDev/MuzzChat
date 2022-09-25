@@ -8,6 +8,6 @@ import javax.inject.Inject
 class ChatRepositoryImpl @Inject constructor(
     private val chatMessageDao: ChatMessageDao
 ): ChatRepository {
-    override fun getChatHistory() = chatMessageDao.getChatMessageList()
+    override suspend fun getChatHistory() = chatMessageDao.getChatMessageList()
     override suspend fun addMessageIntoChatHistory(chatMessageEntity: ChatMessageEntity) = chatMessageDao.insertChatMessage(chatMessageEntity)
 }

@@ -8,15 +8,25 @@ import com.muzz.muzzchat.storage.entities.ChatMessageEntity
 import com.muzz.muzzchat.usecases.ChatUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class ChatViewModel @Inject constructor(private val chatUseCase: ChatUseCase) : ViewModel() {
 
-    val chatMessageList: Flow<List<ChatMessageEntity>> = chatUseCase.getChatHistory()
     var answersTextList = listOf<String>()
+
+    private val _chatMessageList = MutableStateFlow<List<ChatMessageEntity>>(emptyList())
+    val chatMessageList: StateFlow<List<ChatMessageEntity>> get() = _chatMessageList
+
+    init {
+        viewModelScope.launch {
+            chatUseCase.getChatHistory().collect {
+                _chatMessageList.emit(it)
+            }
+        }
+    }
 
     fun sendChat(text: String) {
         viewModelScope.launch {
@@ -35,7 +45,7 @@ class ChatViewModel @Inject constructor(private val chatUseCase: ChatUseCase) : 
     }
 
     suspend fun generateAnswer() {
-        val answerInterval = (1..9).random() * 1000
+        val answerInterval = (1..7).random() * 1000
         delay(answerInterval.toLong())
         chatUseCase.addMessageIntoChatHistory(
             ChatMessage(
