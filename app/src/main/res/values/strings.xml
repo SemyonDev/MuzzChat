@@ -6,6 +6,7 @@
     <string name="user_image">User image</string>
     <string name="message_send_button">Message send button</string>
     <string name="message_mark">message mark</string>
+    <string name="send_message_hint">Your message here</string>
 
 
     <string-array name="answers_array">
