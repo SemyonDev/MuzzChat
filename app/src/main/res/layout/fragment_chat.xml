@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.chatscreen.ChatFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/fragment_chat_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.MyApplication.AppBarOverlay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/fragment_chat_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:popupTheme="@style/Theme.MyApplication.PopupOverlay">
+
+            <ImageButton
+                android:id="@+id/fragment_chat_back_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/back_button"
+                android:src="@drawable/ic_back" />
+
+            <ImageView
+                android:id="@+id/fragment_chat_user_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circle_bg"
+                android:contentDescription="@string/user_image"
+                android:padding="@dimen/default_padding_small"
+                android:src="@drawable/ic_android" />
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment_chat_rv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:clipToPadding="false"
+        android:padding="@dimen/default_padding_small"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_chat_bottom_divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_chat_appbar" />
+
+    <View
+        android:id="@+id/fragment_chat_bottom_divider"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@drawable/shadow_bottom"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_chat_action_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_chat_rv" />
+
+    <LinearLayout
+        android:id="@+id/fragment_chat_action_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="@dimen/default_padding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_chat_bottom_divider">
+
+        <EditText
+            android:id="@+id/fragment_chat_txt"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/chat_action_height"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:layout_weight="2"
+            android:background="@drawable/edtxt_border"
+            android:ellipsize="end"
+            android:hint="@string/lorem_ipsum"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:paddingStart="@dimen/default_padding"
+            android:paddingEnd="@dimen/default_padding" />
+
+        <ImageView
+            android:id="@+id/fragment_chat_send_btn"
+            android:layout_width="@dimen/chat_action_height"
+            android:layout_height="@dimen/chat_action_height"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/circle_bg"
+            android:contentDescription="@string/message_send_button"
+            android:src="@drawable/ic_send" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
