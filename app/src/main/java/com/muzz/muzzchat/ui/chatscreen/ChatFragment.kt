@@ -59,6 +59,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>() {
 
         binding.fragmentChatSendBtn.setOnClickListener {
             viewModel.sendChat(binding.fragmentChatTxt.text.toString())
+            binding.fragmentChatTxt.text.clear()
         }
 
         lifecycleScope.launch {

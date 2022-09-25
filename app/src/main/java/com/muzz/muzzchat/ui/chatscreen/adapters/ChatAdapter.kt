@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.muzz.muzzchat.databinding.ItemMessageMeBinding
 import com.muzz.muzzchat.databinding.ItemMessageOtherBinding
 import com.muzz.muzzchat.entities.ChatMessage
+import com.muzz.muzzchat.helpers.DateTimeHelper.Companion.getDate
 
 class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -18,7 +19,7 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     var startTime = 0L
-    var interval = 1000
+    var interval = 100000
 
     private var messageList = mutableListOf<ChatMessage>()
 
@@ -27,17 +28,6 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         messageList.clear()
         messageList.addAll(newMessageList)
         diffResult.dispatchUpdatesTo(this)
-    }
-
-    fun loadMessages(messages: List<ChatMessage>) {
-        messageList.clear()
-        messageList.addAll(messages)
-        notifyDataSetChanged()
-    }
-
-    fun addFirst(message: ChatMessage) {
-        messageList.add(0, message)
-        notifyItemInserted(0)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -67,10 +57,10 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         fun bind(chatMessage: ChatMessage) {
             with(binding) {
                 itemMessageMeHeaderTimeTxt.visibility = View.GONE
-                showTimeHeader(itemMessageMeHeaderTimeTxt, chatMessage)
+                showTimeHeader(chatMessage)
                 if (chatMessage.isShowTimeStamp) {
                     itemMessageMeHeaderTimeTxt.visibility = View.VISIBLE
-                    itemMessageMeHeaderTimeTxt.text = startTime.toString()
+                    itemMessageMeHeaderTimeTxt.text =  getDate(startTime, "EEEE HH:mm")
                 }
                 itemMessageMeTxt.text = chatMessage.message
             }
@@ -130,7 +120,7 @@ class ChatAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         }
     }
 
-    private fun showTimeHeader(timeTV: TextView, chatMessage: ChatMessage) {
+    private fun showTimeHeader(chatMessage: ChatMessage) {
         chatMessage.timestamp?.let {
             if ((startTime + interval) < it) {
                 startTime = it

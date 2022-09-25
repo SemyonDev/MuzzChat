@@ -17,7 +17,8 @@ class ChatViewModel @Inject constructor(private val chatUseCase: ChatUseCase) : 
 
     val chatMessageList: Flow<List<ChatMessageEntity>> = chatUseCase.getChatHistory()
     var answersTextList = listOf<String>()
-    public fun sendChat(text: String) {
+
+    fun sendChat(text: String) {
         viewModelScope.launch {
             chatUseCase.addMessageIntoChatHistory(
                 ChatMessage(
