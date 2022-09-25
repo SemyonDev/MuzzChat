@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/default_margin_small"
+    android:layout_height="wrap_content"
+    tools:context=".ui.MainActivity">
+
+    <TextView
+        android:id="@+id/item_message_me_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/message_me_bg"
+        android:paddingTop="@dimen/default_padding_small"
+        android:paddingStart="@dimen/default_padding_small"
+        android:paddingEnd="@dimen/default_padding_small"
+        android:textColor="@color/white"
+        android:paddingBottom="@dimen/default_padding_big"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/lorem_ipsum" />
+
+    <ImageView
+        android:contentDescription="@string/message_mark"
+        android:src="@drawable/ic_double_mark_done"
+        android:layout_marginEnd="@dimen/default_margin_small"
+        android:layout_marginBottom="@dimen/default_margin_smallest"
+        android:id="@+id/item_message_status_img"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/item_message_me_txt"
+        app:layout_constraintEnd_toEndOf="@+id/item_message_me_txt" />
+</androidx.constraintlayout.widget.ConstraintLayout>
